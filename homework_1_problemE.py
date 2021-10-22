@@ -27,44 +27,59 @@ for i in range(q):
 # print(p, q, w, v)
 
 
-def find_combination(i, p, q, w, result, r):
-    """
-    寻找可以满足条件的桶的组合搭配
-    :param i: 当前所选桶的类型
-    :param p: 挡墙缸的容量
-    :param q: 桶的种类个数
-    :param w: 桶的容量
-    :param result: 当前组合
-    :param r: 满足条件的各种组合
-    :return: r
-    """
-    if p == 0:
-        temp = result.copy()  # 创建当前组合的副本，避免pop元素后一起改变
-        r.append(temp)  # 添加满足条件的组合
-        result.pop()  # 跳出递归，去除最后一个元素
-        return
-    if i >= q:
-        if p != flag:  # 若是最底层递归，此时result为空，不能pop
-            result.pop()  # 跳出递归，去除最后一个元素
-        return
-    if w[i] > p:
-        result.pop()  # 跳出递归，去除最后一个元素
-        return
-    else:
-        result.append(w[i])  # 添加到当前组合
-        find_combination(i, p - w[i], q, w, result, r)  # 继续选取当前类型
-        find_combination(i + 1, p, q, w, result, r)  # 选取下一类型
+# def find_combination(i, p, q, w, result, r):
+#     """
+#     寻找可以满足条件的桶的组合搭配
+#     :param i: 当前所选桶的类型
+#     :param p: 挡墙缸的容量
+#     :param q: 桶的种类个数
+#     :param w: 桶的容量
+#     :param result: 当前组合
+#     :param r: 满足条件的各种组合
+#     :return: r
+#     """
+#     if p == 0:
+#         temp = result.copy()  # 创建当前组合的副本，避免pop元素后一起改变
+#         r.append(temp)  # 添加满足条件的组合
+#         result.pop()  # 跳出递归，去除最后一个元素
+#         return
+#     if i >= q:
+#         if p != flag:  # 若是最底层递归，此时result为空，不能pop
+#             result.pop()  # 跳出递归，去除最后一个元素
+#         return
+#     if w[i] > p:
+#         result.pop()  # 跳出递归，去除最后一个元素
+#         return
+#     else:
+#         result.append(w[i])  # 添加到当前组合
+#         find_combination(i, p - w[i], q, w, result, r)  # 继续选取当前类型
+#         find_combination(i + 1, p, q, w, result, r)  # 选取下一类型
+#
+#
+# find_combination(0, p, q, w, result, r)
+# # print(r)
+# # print(len(r))
+# min = sum(list(set(r[0])))
+# k = []
+# for i in range(1, len(r)):
+#     now = list(set(r[i]))
+#     if sum(now) < min:
+#         k = now
+#         min = sum(now)
+#
+# print(len(k), " ".join(str(x) for x in k))
+
+barrel = []
+use = []
+p = 0  # 桶种类数量
+q = 0  # 缸容量
+k = 0
 
 
-find_combination(0, p, q, w, result, r)
-# print(r)
-# print(len(r))
-min = sum(list(set(r[0])))
-k = []
-for i in range(1, len(r)):
-    now = list(set(r[i]))
-    if sum(now) < min:
-        k = now
-        min = sum(now)
+def check():
+    pass
 
-print(len(k), " ".join(str(x) for x in k))
+
+def dfs(depth):
+    for i in range(use[depth - 1], n - k + depth + 1):
+        pass
